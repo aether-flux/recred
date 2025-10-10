@@ -1,5 +1,5 @@
 {
-  "template": "template.pdf",
+  "template": "democert.pdf",
   "font": "fonts/Roboto-Bold.ttf",
   "font_size": 24,
   "text_color": [0, 0, 0],
@@ -7,7 +7,6 @@
   "output_name": "{name}.pdf",
   "fields": {
     "name": { "x": 150, "y": 280 },
-    "achievement": { "x": 150, "y": 250 },
-    "event": { "x": 150, "y": 220 }
+    "achievement": { "x": 150, "y": 250 }
   }
 }

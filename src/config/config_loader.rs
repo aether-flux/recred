@@ -26,4 +26,16 @@ impl Config {
         let config: Config = serde_json::from_str(&data)?;
         Ok(config)
     }
+
+    pub fn validate(&self) -> Result<()> {
+        if self.fields.is_empty() {
+            anyhow::bail!("No fields defined in the config");
+        }
+
+        if !std::path::Path::new(&self.template).exists() {
+            anyhow::bail!("Template file not found: {}", &self.template);
+        }
+
+        Ok(())
+    }
 }
