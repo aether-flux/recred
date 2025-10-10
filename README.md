@@ -78,7 +78,7 @@ Recred uses a JSON config file to define:
 
 ## Usage
 ```bash
-recred --config config.json --data data.csv
+recred generate --config config.json --data data.csv
 ```
 
 - `--config or -c`: path to your JSON config file.
