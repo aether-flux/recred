@@ -1,7 +1,7 @@
 #!/bin/bash
 
 CLI_NAME="recred"
-BINARY_NAME="cli"
+BINARY_NAME="recred"
 INSTALL_PATH="/usr/local/bin/$CLI_NAME"
 RELEASE_URL="https://github.com/aether-flux/recred/releases/latest/download/$BINARY_NAME"
 
