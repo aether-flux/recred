@@ -5,6 +5,8 @@ use cli::{commands::Cli, handle};
 mod cli;
 mod config;
 mod data;
+mod pdf;
+mod utils;
 
 fn main() -> Result<()> {
     // Parse arguments

@@ -7,14 +7,15 @@ use std::collections::HashMap;
 pub struct FieldPos {
     pub x: f32,
     pub y: f32,
+    pub color: Option<[u8; 3]>,
+    pub size: Option<f32>,
 }
 
 #[derive(Debug, Deserialize)]
 pub struct Config {
     pub template: String,
-    pub font: String,
-    pub font_size: f32,
-    pub output_dir: String,
+    pub font: Option<String>,
+    pub font_size: Option<f32>,
     pub output_name: String,
     pub text_color: Option<[u8; 3]>,
     pub fields: HashMap<String, FieldPos>,

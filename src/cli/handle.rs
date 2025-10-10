@@ -1,6 +1,7 @@
 use anyhow::Result;
 use rayon::prelude::*;
-use crate::config::config_loader::Config;
+use std::sync::Arc;
+use crate::{config::config_loader::Config, pdf::pdfgen::generate_certificate};
 use crate::data::data_loader::read_csv;
 
 use super::commands::{Cli, Commands};
@@ -8,24 +9,21 @@ use super::commands::{Cli, Commands};
 pub fn handle_cli(cmd: Cli) -> Result<()> {
     match cmd.command {
         Commands::Generate { config, data } => {
-            println!("Config: {}, Data: {}", config, data);
+            println!("Config: {}, Data: {}\n\n", config, data);
 
             let conf = Config::from_file(config.as_str())?;
+            let conf = Arc::new(conf);
             conf.validate()?;
 
             // CSV
-            let records = read_csv("data.csv")?;
+            let records = read_csv(&data)?;
 
             // Working
             records.par_iter().for_each(|record| {
-                for (field_name, position) in &conf.fields {
-                    if let Some(value) = record.get(field_name) {
-                        println!("Placing '{}' at ({}, {})", value, position.x, position.y);
-                        // TODO: PDF editing and drawing
-                    }
+                let conf = Arc::clone(&conf);
+                if let Err(e) = generate_certificate(&record, &conf) {
+                    eprintln!("Error generating certificate: {}", e);
                 }
-
-                // TODO: Save PDF
             });
         }
     }
