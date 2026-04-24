@@ -1,2 +1,5 @@
 /target
 /output
+*.csv
+recred.json
+*.pdf
