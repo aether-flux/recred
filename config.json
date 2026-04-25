@@ -1,0 +1,10 @@
+{
+  "template": "template.pdf",
+  "font_size": 12,
+  "output_name": "{name}.pdf",
+  "fields": {
+    "name": { "x": 71, "y": 96, "max_width": 150 },
+    "department": { "x": 112, "y": 80, "max_width": 50 },
+    "date": { "x": 227, "y": 66, "max_width": 50 }
+  }
+}
